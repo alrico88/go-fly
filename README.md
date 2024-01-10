@@ -1,6 +1,12 @@
 # Go Fly!
 
-A Random Flight Generator
+A Random Flight Generator with customizable parameters.
+
+Based on [Random Flight Generator](https://github.com/gabranches/random-flight-generator).
+
+Made with:
+- [Nuxt 3](https://nuxt.com/)
+- [Leaflet](https://leafletjs.com/)
 
 ## Development
 
@@ -11,12 +17,6 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
 # pnpm
 pnpm install --shamefully-hoist
 ```
@@ -26,7 +26,7 @@ pnpm install --shamefully-hoist
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ### Production
@@ -34,13 +34,13 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+pnpm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
