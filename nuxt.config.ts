@@ -7,6 +7,10 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "theme-color", content: "white" },
         { name: "author", content: "Alberto Rico" },
+        {
+          name: "google-site-verification",
+          content: "nc0pKffQdhm679g_eXEQhjK-NzBM8ZbyFQLR9ZMeJtc",
+        },
       ],
     },
   },
@@ -47,11 +51,6 @@ export default defineNuxtConfig({
     },
     client: {
       installPrompt: true,
-    },
-    workbox: {
-      navigateFallback: "/",
-      globPatterns: ["**/*.{js,css,html,png,svg,ico,woff,woff2}"],
-      cleanupOutdatedCaches: true,
     },
   },
   googleFonts: {
