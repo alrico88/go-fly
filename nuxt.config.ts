@@ -12,6 +12,13 @@ export default defineNuxtConfig({
           content: "nc0pKffQdhm679g_eXEQhjK-NzBM8ZbyFQLR9ZMeJtc",
         },
       ],
+      script: [
+        {
+          src: "https://stats.alrico.es/script.js",
+          async: true,
+          "data-website-id": "70a66722-1627-4823-9835-b6e424cd1ad7",
+        },
+      ],
     },
   },
   css: ["@/assets/main.scss"],
