@@ -1,34 +1,30 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "nuxt3-boilerplate",
+      title: "Go Fly!",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "theme-color", content: "#212121" },
+        { name: "theme-color", content: "white" },
+        { name: "author", content: "Alberto Rico" },
       ],
-      htmlAttrs: {
-        "data-bs-theme": "light",
-      },
     },
   },
   css: ["@/assets/main.scss"],
   modules: [
     "nuxt-icon",
     "@vueuse/nuxt",
-    [
-      "@pinia/nuxt",
-      {
-        autoImports: ["defineStore", "storeToRefs"],
-      },
-    ],
     "@vite-pwa/nuxt",
+    "nuxt3-leaflet",
+    "@bootstrap-vue-next/nuxt",
+    "@nuxtjs/google-fonts",
+    "@nuxtjs/color-mode",
   ],
   pwa: {
     registerType: "prompt",
     manifest: {
-      name: "nuxt3-boilerplate",
-      description: "CHANGE THIS",
+      name: "Go Fly!",
+      description: "A random flight generator",
       theme_color: "white",
       icons: [
         {
@@ -57,5 +53,15 @@ export default defineNuxtConfig({
       globPatterns: ["**/*.{js,css,html,png,svg,ico,woff,woff2}"],
       cleanupOutdatedCaches: true,
     },
+  },
+  googleFonts: {
+    families: {
+      B612: [400, 700],
+      Roboto: [400, 500, 700],
+    },
+  },
+  colorMode: {
+    dataValue: "bs-theme",
+    storageKey: "nuxt-color-mode",
   },
 });

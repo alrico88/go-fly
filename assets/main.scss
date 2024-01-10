@@ -1,4 +1,8 @@
-$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-monospace: 'B612', monospace;
+
+$primary: #0D74CE;
+$info: #D5EFFF;
 
 body, html {
   font-size: 16px;
@@ -20,4 +24,9 @@ body, html {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.icon {
+  vertical-align: middle; 
+  transform: translateY(-5%);
 }
