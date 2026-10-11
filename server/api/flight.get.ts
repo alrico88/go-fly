@@ -1,25 +1,32 @@
 import flightGenerator from "random-flight-generator";
 
-export default defineEventHandler<{
-  query: {
-    minDistance?: number;
-    maxDistance?: number;
-    departure?: string;
-    arrival?: string;
-    includeCountries?: string[];
-    excludeCountries?: string[];
-    majorAirportsOnly?: boolean;
-  };
-}>((event) => {
-  const q = getQuery(event);
+type QueryValue = string | string[] | undefined;
+
+// Query params always arrive as strings, so parse them before handing them to the generator
+function toNumber(value: QueryValue) {
+  const num = Number(value);
+
+  return value === "" || Number.isNaN(num) ? undefined : num;
+}
+
+function toArray(value: QueryValue) {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  return Array.isArray(value) ? value : [value];
+}
+
+export default defineEventHandler((event) => {
+  const q = getQuery<Record<string, QueryValue>>(event);
 
   return flightGenerator({
-    minDistance: q.minDistance,
-    maxDistance: q.maxDistance,
-    departure: q.departure,
-    arrival: q.arrival,
-    includeCountries: q.includeCountries,
-    excludeCountries: q.excludeCountries,
-    majorAirportsOnly: q.majorAirportsOnly,
+    minDistance: toNumber(q.minDistance),
+    maxDistance: toNumber(q.maxDistance),
+    departure: q.departure || undefined,
+    arrival: q.arrival || undefined,
+    includeCountries: toArray(q.includeCountries),
+    excludeCountries: toArray(q.excludeCountries),
+    majorAirportsOnly: q.majorAirportsOnly === "true",
   });
 });

@@ -34,12 +34,14 @@ b-form(@submit.prevent="calculate")
     b-form-group(label="Include Countries")
       b-form-tags(
         v-model="params.countries.include",
-        placeholder="Enter country codes"
+        placeholder="Enter country codes",
+        @keydown.enter.prevent
       )
     b-form-group(label="Exclude Countries")
       b-form-tags(
         v-model="params.countries.exclude",
-        placeholder="Enter country codes"
+        placeholder="Enter country codes",
+        @keydown.enter.prevent
       )
     b-form-checkbox(v-model="params.majorAirports") Major airports only (recommended)
     b-button.w-100(variant="primary", type="submit", :disabled="loading") #[icon(name="mdi:airplane-cog")] Generate Flight

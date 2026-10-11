@@ -21,12 +21,16 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["@/assets/main.scss"],
+  compatibilityDate: "2026-10-12",
+  build: {
+    // Bundle it with the server so it shares Vue's runtime instead of loading a second copy
+    transpile: ["bootstrap-vue-next"],
+  },
+  css: ["@/assets/main.scss", "maplibre-gl/dist/maplibre-gl.css"],
   modules: [
-    "nuxt-icon",
+    "@nuxt/icon",
     "@vueuse/nuxt",
     "@vite-pwa/nuxt",
-    "nuxt3-leaflet",
     "@bootstrap-vue-next/nuxt",
     "@nuxtjs/google-fonts",
     "@nuxtjs/color-mode",
@@ -64,6 +68,21 @@ export default defineNuxtConfig({
     families: {
       B612: [400, 700],
       Roboto: [400, 500, 700],
+    },
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // Bootstrap 5 still relies on @import and global Sass functions
+          silenceDeprecations: [
+            "import",
+            "global-builtin",
+            "color-functions",
+            "if-function",
+          ],
+        },
+      },
     },
   },
   colorMode: {
