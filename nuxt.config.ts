@@ -22,6 +22,10 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: "2026-10-12",
+  build: {
+    // Bundle it with the server so it shares Vue's runtime instead of loading a second copy
+    transpile: ["bootstrap-vue-next"],
+  },
   css: ["@/assets/main.scss", "maplibre-gl/dist/maplibre-gl.css"],
   modules: [
     "@nuxt/icon",
